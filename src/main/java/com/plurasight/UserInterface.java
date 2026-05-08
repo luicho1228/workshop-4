@@ -38,17 +38,17 @@ public class UserInterface {
     }
 
     public void lookUpVehicleDisplay(){
-        System.out.println("Select filter search: " +
-                "\n1.Search vehicles by price " +
-                "\n2.Search Vehicles by Make and Model " +
-                "\n3.Search vehicles by year " +
-                "\n4.Search vehicles by Color " +
-                "\n5.Search vehicles by mileage " +
-                "\n6.Search vehicles by vehicle type " +
-                "\n7.Search all vehicles in dealership " +
-                "\n8.Go Back");
         boolean isRunning = true;
         while (isRunning) {
+            System.out.println("Select filter search: " +
+                    "\n1.Search vehicles by price " +
+                    "\n2.Search Vehicles by Make and Model " +
+                    "\n3.Search vehicles by year " +
+                    "\n4.Search vehicles by Color " +
+                    "\n5.Search vehicles by mileage " +
+                    "\n6.Search vehicles by vehicle type " +
+                    "\n7.Search all vehicles in dealership " +
+                    "\n8.Go Back");
             int userInput = scanner.nextInt();
             scanner.nextLine();
             switch (userInput) {
@@ -92,22 +92,38 @@ public class UserInterface {
     public void processGetByMakeModelRequest(){
         System.out.println("Enter make:");
         String make = scanner.nextLine();
-        System.out.println("Enter model");
+        System.out.println("Enter model:");
         String model = scanner.nextLine();
         displayVehicles(dealership.getVehiclesByMakeModel(make,model));
 
     }
     public void processGetByYearRequest(){
-
+        System.out.println("Enter start Year: ");
+        int startYear = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter end year: ");
+        int endYear = scanner.nextInt();;
+        scanner.nextLine();
+        displayVehicles(dealership.getVehiclesByYear(startYear,endYear));
     }
     public void processGetByColorRequest(){
-
+        System.out.println("Enter vehicle color: ");
+        String color = scanner.nextLine();
+        displayVehicles(dealership.getVehiclesByColor(color));
     }
     public void processGetByMileageRequest(){
-
+        System.out.println("Enter min mileage: ");
+        int minMileage = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter max mileage: ");
+        int maxMileage = scanner.nextInt();
+        scanner.nextLine();
+        displayVehicles(dealership.getVehiclesByMileage(minMileage,maxMileage));
     }
     public void processGetByVehicleTypeRequest(){
-
+        System.out.println("Enter vehicle type: ");
+        String vehicleType = scanner.nextLine();
+        displayVehicles(dealership.getVehiclesByType(vehicleType));
     }
     public void processGetAllVehicleRequest(){
         displayVehicles(dealership.getAllVehicles());
