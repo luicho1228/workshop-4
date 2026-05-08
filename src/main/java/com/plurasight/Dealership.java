@@ -50,5 +50,15 @@ public class Dealership {
         inventory.remove(vehicle);
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
 }

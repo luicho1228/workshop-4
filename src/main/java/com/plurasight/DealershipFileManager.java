@@ -4,9 +4,11 @@ import java.io.*;
 
 public class DealershipFileManager {
 
+    private static String filePath = "dealership-inventory.csv";
+
+    private DealershipFileManager(){}
+
     public static Dealership getDealership(){
-        //loadDealership from file
-        String filePath = "dealership-inventory.csv";
         Dealership dealership;
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
@@ -20,16 +22,23 @@ public class DealershipFileManager {
                 int odometer = Integer.parseInt(fileDataArray[6]);
                 double price = Double.parseDouble(fileDataArray[7]);
                 dealership.addVehicle(new Vehicle(vin,year,fileDataArray[2],fileDataArray[3],fileDataArray[4],fileDataArray[5],odometer,price));
+            }bufferedReader.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }return dealership;
+    }
+
+
+    public static void saveDealership(Dealership dealership){
+        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath));
+            bufferedWriter.write(dealership.getName()+"|"+dealership.getAddress()+"|"+dealership.getPhone()+"\n");
+            for (Vehicle vehicle : dealership.getAllVehicles()){
+                bufferedWriter.write(vehicle.toString()+"\n");
             }
+            bufferedWriter.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
-        return dealership;
-    }
-    public static void saveDealership(Dealership dealership){
-
-        //save data to files
     }
 }
