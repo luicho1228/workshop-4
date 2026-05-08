@@ -51,12 +51,12 @@ public class Dealership {
         }return vehiclesWithColor;
     }
     public List<Vehicle> getVehiclesByMileage(int min, int max){
-        List<Vehicle> vehiclesWithColor = new ArrayList<>();
+        List<Vehicle> vehiclesInMileageRange = new ArrayList<>();
         for (Vehicle vehicle: inventory){
             if (vehicle.getOdometer() > min && vehicle.getOdometer() < max){
-                vehiclesWithColor.add(vehicle);
+                vehiclesInMileageRange.add(vehicle);
             }
-        }return vehiclesWithColor;
+        }return vehiclesInMileageRange;
     }
     public List<Vehicle> getVehiclesByType(String vehicleType){
         List<Vehicle> vehiclesWithType = new ArrayList<>();

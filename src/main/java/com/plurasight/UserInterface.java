@@ -25,7 +25,7 @@ public class UserInterface {
             scanner.nextLine();
             switch (userInput) {
                 case 1:
-                    lookUpVehicleDisplay();
+                    displayVehicleLookupMenu();
                     break;
                 case 2:
                     processAddVehicleRequest();
@@ -44,7 +44,7 @@ public class UserInterface {
         this.dealership = DealershipFileManager.getDealership();
     }
 
-    public void lookUpVehicleDisplay(){
+    public void displayVehicleLookupMenu(){
         boolean isRunning = true;
         while (isRunning) {
             System.out.println("""
