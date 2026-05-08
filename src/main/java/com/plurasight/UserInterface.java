@@ -118,6 +118,7 @@ public class UserInterface {
         System.out.println("Enter vehicle price: ");
         double price = scanner.nextDouble();
         dealership.addVehicle(new Vehicle(vin,year,make,model,vehicleType,color,odometer,price));
+        DealershipFileManager.saveDealership(dealership);
 
     }
     public void processRemoveVehicleRequest(){
