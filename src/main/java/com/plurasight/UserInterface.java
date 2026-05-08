@@ -38,6 +38,15 @@ public class UserInterface {
     }
 
     public void lookUpVehicleDisplay(){
+        System.out.println("Select filter search: " +
+                "\n1.Search vehicles by price " +
+                "\n2.Search Vehicles by Make and Model " +
+                "\n3.Search vehicles by year " +
+                "\n4.Search vehicles by Color " +
+                "\n5.Search vehicles by mileage " +
+                "\n6.Search vehicles by vehicle type " +
+                "\n7.Search all vehicles in dealership " +
+                "\n8.Go Back");
         boolean isRunning = true;
         while (isRunning) {
             int userInput = scanner.nextInt();
@@ -81,6 +90,11 @@ public class UserInterface {
         displayVehicles(dealership.getVehiclesByPrice(min,max));
     }
     public void processGetByMakeModelRequest(){
+        System.out.println("Enter make:");
+        String make = scanner.nextLine();
+        System.out.println("Enter model");
+        String model = scanner.nextLine();
+        displayVehicles(dealership.getVehiclesByMakeModel(make,model));
 
     }
     public void processGetByYearRequest(){
@@ -122,8 +136,9 @@ public class UserInterface {
 
     }
     public void processRemoveVehicleRequest(){
-
+        //remove vehicle from dealership
     }
+
     private void displayVehicles(List<Vehicle> vehicles){
         System.out.println("Vin | Year | Make | Model | Vehicle Type | Color | Odometer | Price");
         for (Vehicle vehicle: vehicles){

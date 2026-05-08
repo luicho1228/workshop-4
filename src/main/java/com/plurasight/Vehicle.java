@@ -1,5 +1,7 @@
 package com.plurasight;
 
+import java.util.Objects;
+
 public class Vehicle {
     private int vin;
     private int year;
@@ -51,6 +53,18 @@ public class Vehicle {
 
     public double getPrice() {
         return price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Vehicle vehicle = (Vehicle) o;
+        return vin == vehicle.vin && year == vehicle.year && odometer == vehicle.odometer && Double.compare(price, vehicle.price) == 0 && Objects.equals(make, vehicle.make) && Objects.equals(model, vehicle.model) && Objects.equals(vehicleType, vehicle.vehicleType) && Objects.equals(Color, vehicle.Color);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(vin, year, make, model, vehicleType, Color, odometer, price);
     }
 
     @Override
