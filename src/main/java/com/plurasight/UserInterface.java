@@ -5,18 +5,28 @@ import java.util.Scanner;
 
 public class UserInterface {
     private Dealership dealership;
-    private Scanner scanner;
+    private final Scanner scanner;
     public UserInterface(){
         scanner = new Scanner(System.in);
-        display();
     }
     public void display(){
         init();
         boolean isRunning = true;
         while (isRunning){
             //display Menu
+            System.out.println("Enter Option:"+"\n1.Look up vehicle"+"\n2.Add or remove vehicle from dealership");
             int userInput = scanner.nextInt();
             scanner.nextLine();
+
+            switch (userInput){
+                case 1:
+
+                    break;
+                case 2:
+                    break;
+            }
+
+
             switch (userInput){
                 case 1:
                     processGetByPriceRequest();
@@ -44,6 +54,9 @@ public class UserInterface {
                     break;
                 case 9:
                     processRemoveVehicleRequest();
+                    break;
+                case 10:
+                    isRunning =false;
                     break;
             }
         }
@@ -80,6 +93,25 @@ public class UserInterface {
         displayVehicles(dealership.getAllVehicles());
     }
     public void processAddVehicleRequest(){
+        System.out.println("Enter vehicle VIN: ");
+        int vin = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter vehicle year: ");
+        int year = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter vehicle make: ");
+        String make = scanner.nextLine();
+        System.out.println("Enter vehicle model: ");
+        String model = scanner.nextLine();
+        System.out.println("Enter vehicle type: ");
+        String vehicleType = scanner.nextLine();
+        System.out.println("Enter vehicle color: ");
+        String color = scanner.nextLine();
+        System.out.println("Enter vehicle mileage: ");
+        int odometer = scanner.nextInt();
+        System.out.println("Enter vehicle price: ");
+        double price = scanner.nextDouble();
+        dealership.addVehicle(new Vehicle(vin,year,make,model,vehicleType,color,odometer,price));
 
     }
     public void processRemoveVehicleRequest(){

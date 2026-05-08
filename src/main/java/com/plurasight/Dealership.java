@@ -1,18 +1,18 @@
 package com.plurasight;
-
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Dealership {
 
-    private String name;
-    private String address;
-    private String phone;
-    private ArrayList<Vehicle> inventory;
+    private final String name;
+    private final String address;
+    private final String phone;
+    private final ArrayList<Vehicle> inventory;
 
     public Dealership(String name, String address, String phone){
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
         inventory = new ArrayList<>();
     }
 
