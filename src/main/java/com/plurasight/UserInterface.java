@@ -13,21 +13,36 @@ public class UserInterface {
         init();
         boolean isRunning = true;
         while (isRunning){
-            //display Menu
-            System.out.println("Enter Option:"+"\n1.Look up vehicle"+"\n2.Add or remove vehicle from dealership");
+            System.out.println("Enter Option:"+"\n1.Look up vehicle"+"\n2.Add vehicle to dealership"+"\n3.remove vehicle from dealership" + "\n4.Exit");
             int userInput = scanner.nextInt();
             scanner.nextLine();
-
             switch (userInput){
                 case 1:
-
+                    lookUpVehicleDisplay();
                     break;
                 case 2:
+                    processAddVehicleRequest();
+                    break;
+                case 3:
+                    processRemoveVehicleRequest();
+                    break;
+                case 4:
+                    isRunning = false;
                     break;
             }
+        }
+    }
 
+    private void init(){
+        this.dealership = DealershipFileManager.getDealership();
+    }
 
-            switch (userInput){
+    public void lookUpVehicleDisplay(){
+        boolean isRunning = true;
+        while (isRunning) {
+            int userInput = scanner.nextInt();
+            scanner.nextLine();
+            switch (userInput) {
                 case 1:
                     processGetByPriceRequest();
                     break;
@@ -50,19 +65,10 @@ public class UserInterface {
                     processGetAllVehicleRequest();
                     break;
                 case 8:
-                    processAddVehicleRequest();
-                    break;
-                case 9:
-                    processRemoveVehicleRequest();
-                    break;
-                case 10:
-                    isRunning =false;
+                    isRunning = false;
                     break;
             }
         }
-    }
-    private void init(){
-        this.dealership = DealershipFileManager.getDealership();
     }
 
     public void processGetByPriceRequest(){
