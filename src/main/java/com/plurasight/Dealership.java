@@ -11,7 +11,7 @@ public class Dealership {
     private ArrayList<Vehicle> inventory;
 
     public Dealership(String name, String address, String phone){
-
+        inventory = new ArrayList<>();
     }
 
     public List<Vehicle> getVehiclesByPrice(double min, double max){
@@ -33,14 +33,13 @@ public class Dealership {
         return null;
     }
     public List<Vehicle> getAllVehicles(){
-        return null;
+        return inventory;
     }
     public void addVehicle(Vehicle vehicle){
-
+        inventory.add(vehicle);
     }
-    public Vehicle removeVehicle(Vehicle vehicle){
-
-        return null;
+    public void removeVehicle(Vehicle vehicle){
+        inventory.remove(vehicle);
     }
 
 
