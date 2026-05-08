@@ -6,13 +6,15 @@ import java.util.Scanner;
 public class UserInterface {
     private Dealership dealership;
     private final Scanner scanner;
-    public UserInterface(){
+
+    public UserInterface() {
         scanner = new Scanner(System.in);
     }
-    public void display(){
+
+    public void display() {
         init();
         boolean isRunning = true;
-        while (isRunning){
+        while (isRunning) {
             System.out.println("""
                     Enter Option:
                     1.Look up vehicle
@@ -21,7 +23,7 @@ public class UserInterface {
                     4.Exit""");
             int userInput = scanner.nextInt();
             scanner.nextLine();
-            switch (userInput){
+            switch (userInput) {
                 case 1:
                     lookUpVehicleDisplay();
                     break;
