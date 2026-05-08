@@ -25,7 +25,6 @@ public class DealershipFileManager {
         }return dealership;
     }
 
-
     public static void saveDealership(Dealership dealership){
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(FILEPATH));
