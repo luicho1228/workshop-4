@@ -13,7 +13,12 @@ public class UserInterface {
         init();
         boolean isRunning = true;
         while (isRunning){
-            System.out.println("Enter Option:"+"\n1.Look up vehicle"+"\n2.Add vehicle to dealership"+"\n3.remove vehicle from dealership" + "\n4.Exit");
+            System.out.println("""
+                    Enter Option:
+                    1.Look up vehicle
+                    2.Add vehicle to dealership
+                    3.remove vehicle from dealership
+                    4.Exit""");
             int userInput = scanner.nextInt();
             scanner.nextLine();
             switch (userInput){
@@ -40,15 +45,16 @@ public class UserInterface {
     public void lookUpVehicleDisplay(){
         boolean isRunning = true;
         while (isRunning) {
-            System.out.println("Select filter search: " +
-                    "\n1.Search vehicles by price " +
-                    "\n2.Search Vehicles by Make and Model " +
-                    "\n3.Search vehicles by year " +
-                    "\n4.Search vehicles by Color " +
-                    "\n5.Search vehicles by mileage " +
-                    "\n6.Search vehicles by vehicle type " +
-                    "\n7.Search all vehicles in dealership " +
-                    "\n8.Go Back");
+            System.out.println("""
+                    Select filter search:
+                    1.Search vehicles by price
+                    2.Search Vehicles by Make and Model
+                    3.Search vehicles by year
+                    4.Search vehicles by Color
+                    5.Search vehicles by mileage
+                    6.Search vehicles by vehicle type
+                    7.Search all vehicles in dealership
+                    8.Go Back""");
             int userInput = scanner.nextInt();
             scanner.nextLine();
             switch (userInput) {
@@ -102,7 +108,7 @@ public class UserInterface {
         int startYear = scanner.nextInt();
         scanner.nextLine();
         System.out.println("Enter end year: ");
-        int endYear = scanner.nextInt();;
+        int endYear = scanner.nextInt();
         scanner.nextLine();
         displayVehicles(dealership.getVehiclesByYear(startYear,endYear));
     }
@@ -129,6 +135,15 @@ public class UserInterface {
         displayVehicles(dealership.getAllVehicles());
     }
     public void processAddVehicleRequest(){
+        dealership.addVehicle(getVehicleFromUser());
+        DealershipFileManager.saveDealership(dealership);
+    }
+    public void processRemoveVehicleRequest(){
+        dealership.removeVehicle(getVehicleFromUser());
+        DealershipFileManager.saveDealership(dealership);
+    }
+
+    public Vehicle getVehicleFromUser(){
         System.out.println("Enter vehicle VIN: ");
         int vin = scanner.nextInt();
         scanner.nextLine();
@@ -147,12 +162,7 @@ public class UserInterface {
         int odometer = scanner.nextInt();
         System.out.println("Enter vehicle price: ");
         double price = scanner.nextDouble();
-        dealership.addVehicle(new Vehicle(vin,year,make,model,vehicleType,color,odometer,price));
-        DealershipFileManager.saveDealership(dealership);
-
-    }
-    public void processRemoveVehicleRequest(){
-        //remove vehicle from dealership
+        return new Vehicle(vin,year,make,model,vehicleType,color,odometer,price);
     }
 
     private void displayVehicles(List<Vehicle> vehicles){
