@@ -1,4 +1,5 @@
 package com.plurasight;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,70 +10,92 @@ public class Dealership {
     private final String phone;
     private final ArrayList<Vehicle> inventory;
 
-    public Dealership(String name, String address, String phone){
+    public Dealership(String name, String address, String phone) {
         this.name = name;
         this.address = address;
         this.phone = phone;
         inventory = new ArrayList<>();
     }
 
-    public List<Vehicle> getVehiclesByPrice(double min, double max){
+    public List<Vehicle> getVehiclesByPrice(double min, double max) {
         ArrayList<Vehicle> vehiclesInPriceRange = new ArrayList<>();
-        for (Vehicle vehicle: inventory){
-            if (vehicle.getPrice() > min && vehicle.getPrice() < max){
+
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getPrice() >= min && vehicle.getPrice() <= max) {
                 vehiclesInPriceRange.add(vehicle);
             }
-        }return vehiclesInPriceRange;
+        }
+        return vehiclesInPriceRange;
     }
 
-    public List<Vehicle> getVehiclesByMakeModel(String make, String model){
+    public List<Vehicle> getVehiclesByMakeModel(String make, String model) {
         List<Vehicle> vehiclesInMakeModel = new ArrayList<>();
-        for(Vehicle vehicle: inventory){
-            if (vehicle.getMake().equalsIgnoreCase(make)){
-                if (vehicle.getModel().equalsIgnoreCase(model)){
-                    vehiclesInMakeModel.add(vehicle);}
+
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getMake().equalsIgnoreCase(make)) {
+                if (vehicle.getModel().equalsIgnoreCase(model)) {
+                    vehiclesInMakeModel.add(vehicle);
+                }
             }
-        }return vehiclesInMakeModel;
+        }
+        return vehiclesInMakeModel;
     }
-    public List<Vehicle> getVehiclesByYear(int min, int max){
+
+    public List<Vehicle> getVehiclesByYear(int min, int max) {
         List<Vehicle> vehiclesByYear = new ArrayList<>();
-        for (Vehicle vehicle: inventory){
-            if (vehicle.getYear() > min && vehicle.getYear() < max){
+
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getYear() >= min && vehicle.getYear() <= max) {
                 vehiclesByYear.add(vehicle);
             }
-        }return vehiclesByYear;
+        }
+        return vehiclesByYear;
     }
-    public List<Vehicle> getVehiclesByColor(String color){
+
+    public List<Vehicle> getVehiclesByColor(String color) {
         List<Vehicle> vehiclesWithColor = new ArrayList<>();
-        for (Vehicle vehicle:inventory) {
+
+        for (Vehicle vehicle : inventory) {
             if (vehicle.getColor().equalsIgnoreCase(color)) {
                 vehiclesWithColor.add(vehicle);
             }
-        }return vehiclesWithColor;
+        }
+        return vehiclesWithColor;
     }
-    public List<Vehicle> getVehiclesByMileage(int min, int max){
+
+    public List<Vehicle> getVehiclesByMileage(int min, int max) {
         List<Vehicle> vehiclesInMileageRange = new ArrayList<>();
-        for (Vehicle vehicle: inventory){
-            if (vehicle.getOdometer() > min && vehicle.getOdometer() < max){
+
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getOdometer() >= min && vehicle.getOdometer() <= max) {
                 vehiclesInMileageRange.add(vehicle);
             }
-        }return vehiclesInMileageRange;
+        }
+        return vehiclesInMileageRange;
     }
-    public List<Vehicle> getVehiclesByType(String vehicleType){
+
+    public List<Vehicle> getVehiclesByType(String vehicleType) {
         List<Vehicle> vehiclesWithType = new ArrayList<>();
-        for (Vehicle vehicle: inventory){
-            if (vehicle.getVehicleType().equalsIgnoreCase(vehicleType)){
+
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getVehicleType().equalsIgnoreCase(vehicleType)) {
                 vehiclesWithType.add(vehicle);
             }
-        }return vehiclesWithType;
+        }
+        return vehiclesWithType;
     }
-    public List<Vehicle> getAllVehicles(){
+
+    public List<Vehicle> getAllVehicles() {
+        ArrayList<Vehicle> inventoryCopy = new ArrayList<>();
+
         return inventory;
     }
-    public void addVehicle(Vehicle vehicle){
+
+    public void addVehicle(Vehicle vehicle) {
         inventory.add(vehicle);
     }
-    public void removeVehicle(Vehicle vehicle){
+
+    public void removeVehicle(Vehicle vehicle) {
         inventory.remove(vehicle);
     }
 
