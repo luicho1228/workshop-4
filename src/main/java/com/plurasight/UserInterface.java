@@ -234,6 +234,13 @@ public class UserInterface {
         return null;
     }
 
+    private void saleVehicle(){
+
+    }
+    private void leaseVehicle(){
+
+    }
+
     private void displayVehicles(List<Vehicle> vehicles){
         System.out.println("Vin | Year | Make | Model | Vehicle Type | Color | Odometer | Price");
         for (Vehicle vehicle: vehicles){
